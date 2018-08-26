@@ -1,2 +1,2 @@
-#Programming 1 - Insertion Sort
-###Luke Nigro
+# Programming 1 - Insertion Sort
+### Luke Nigro
