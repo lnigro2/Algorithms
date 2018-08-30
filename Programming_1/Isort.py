@@ -26,9 +26,12 @@ def Isort():
     #Creates the answer.txt file
     answer_file = open('answer.txt', 'w')   #Name the file to write sorted numbers to
     
-    #Writes the sorted numbers to the answer.txt file
-    for n in nums:
+    #Writes the all but the last of the sorted numbers to the answer.txt file
+    for n in nums[0:len(nums)-1]:
         answer_file.write('{0}; '.format(n))
+
+    #Writes the last of the sorted numbers to answer.txt
+    answer_file.write(str(nums[len(nums)-1]))
     answer_file.close()
             
 def RunIsort():
@@ -37,11 +40,14 @@ def RunIsort():
 
     #Handles invalid file inputs and prompts the user to enter a valid file
     except IOError:
-        print("You did no enter a valid file. Please try again.")
+        print("File not found or path is incorrect")
         
     #Handles errors caused by elements of the input file that cannot be
     #converted to integer format
     except ValueError:
-        print("ValueError: Not all data was convertable to integers.")    
+        print("ValueError: Not all data was convertable to integers.")
+        
+    finally:
+        print("File was successfully sorted!")
 
 RunIsort()
