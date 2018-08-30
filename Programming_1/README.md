@@ -4,6 +4,7 @@
 
 ## Program Description
 ---
+This is a fairly straightforward program that I have created, which takes an ambiguous .txt file which contains a semicolon delimited list of integers and transforms it into a python list. The program then takes that list and runs it through an insertion sort algorithm, which will reproduce the original list of integers such that n`1 < n`2 < ... < n`n
 
 ## Algorithm Breakdown
 ---
