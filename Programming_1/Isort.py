@@ -1,6 +1,6 @@
 #Luke Nigro
 #Programming Assignment 1: Insertion Sort
-
+import time
 #Function that runs the Insertion Sorting Algorithm
 def Isort():
     
@@ -41,13 +41,16 @@ def RunIsort():
     #Handles invalid file inputs and prompts the user to enter a valid file
     except IOError:
         print("File not found or path is incorrect")
-        
+        time.sleep(2.0)
+
     #Handles errors caused by elements of the input file that cannot be
     #converted to integer format
     except ValueError:
         print("ValueError: Not all data was convertable to integers.")
-        
-    finally:
+        time.sleep(2.0)
+
+    else:
         print("File was successfully sorted!")
+        time.sleep(2.0)
 
 RunIsort()
