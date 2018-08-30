@@ -22,9 +22,12 @@ I used the spyder platform to write the Isort.py program, and tested the program
 
 ---
 ## What Does and What Does Not Work
+For the most part everything works as expected so long as the program description is followed. The Isort program consistently sorts numbers from least to greatest so long as initial inputs are correct.
+
+One improvement which could be made would be to allow float values as well and have the program sort all real numbers, and not just integers. Due to the scope of the assignment it did not seem like this was necessary, so files that are entered into the program which contain float type elements will raise a `ValueError`.
 
 ---
 ## Data Structure Design
-The data from the .txt file is stored in a python list format 
+The data from the .txt file is stored in a python list format. All of the sorting is done within the python list, and the elements of the sorted list are printed to the answer.txt file.
 
 ---
