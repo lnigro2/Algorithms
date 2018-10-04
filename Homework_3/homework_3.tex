@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\author{Luke Nigro}
+\title{Algorithms and Data Structures}
+\date{September 19th, 2018}
+
+\begin{document}
+
+\centering \Huge Algorithms and Data Structures \\
+\Large Luke Nigro - Homework 3 \\
+\begin{flushleft}
+\begin{enumerate}
+\setlength\itemsep{2em}
+
+\item[1a.] A {\itshape d-ary} heap is similar in looks to a normal binary heap, with the only caveat being that each node has $d$ children as opposed to 2. The array of the {\itshape d-ary} would have the following properties:\\
+\begin{enumerate}
+\item \textbf{Root:} $A[1]$\\
+\item \textbf{Parent of $A[i]$}  = $A[\floor{\frac{i}{2}}]$\\
+\item \textbf{Children of Parent $A[i]$} = $A[2i, ...,2i + d - 1]$
+\end{enumerate}
+
+\item[1b.] Since a binary heap is in the form of a binary tree, a binary heap has between $2^h$ and $2^{h + 1}-1$ elements, or $2^h \leq n \leq 2^{h + 1}-1$ where h is the height of the heap. Extending this to a {\itshape d-ary}, we should have: \par
+\bigskip
+$d^h \leq n \leq d^{h + 1}-1\Rightarrow h \leq \log_dn \leq h + 1 \Rightarrow h = \floor{\log_dn}$
+
+\item[1c.]The runtime of EXTRACT-MAX for a normal binary heap is $O(lgn)$, which is equivalent to the runtime of MAX-HEAPIFY. This makes sense, since the MAX-HEAPIFY function is the only part of the EXTRACT-MAX function that takes a noticable amount of runtime. Extending to the {\itshape d-ary}, the runtime of MAX-HEAPIFY should increase to $O(d*\log_dn)$ since each of the {\itshape sub-d-arys} will have to loop through the children $d$ times to find the maximum value of each {\itshape sub-d-ary}. Like the binary-heap, this process is repeateda number of times equivalent to the height, which in this case is $\log_dn$.  So - the runtime of our EXTRACT-MAX will continue to be equivalent to the runtime of MAX-HEAPIFY, which again in this case is  $O(d*\log_dn)$.
+
+\item[1d.] The INSERT function is solely dependant on the runtime of the HEAP-INCREASE-KEY function, which is dependant on the height of the heap. So in the example of a binary heap, both functions will have a runtime of $O(lgn)$. The height of our {\itshape d-ary} is $\log_dn$, so the runtime of the INSERT function here is $O(\log_dn)$.
+
+\item[2.] Minimum of the Young tableau is always in $A[1,1]$\\
+$min = A[1,1]$\\
+$i,j= 1$\\
+while $i < m$ and $j < n$\\
+\quad if $A[i + 1, j] \leq A[i, j+1]$\\
+\quad \quad exchange $A[i,j]$ and $A[i + 1,j]$\\
+\quad\quad $i = i + 1$\\
+\quad else\\
+\quad \quad exchange $A[i,j]$ and $A[i ,j+1]$\\
+\quad  \quad j = j + 1\\
+$A[i,j] = \infty$\\
+return $A$, $min$\par
+\bigskip
+The while loop here will run no more than $m + n$ times, therefore our algorithm has a runtime of $O(m + n)$ as desired.
+
+\item[Interview:] Since we know the integers involved here, this problem should be fairly simple to solve with a binary max-heap and a heapsort. Using MAX-HEAPIFY we can easily implement a HEAPSORT algorithm which will place objects of the same color adjacent to eachother in $O(lgn)$ time. To save some runtime, we could include logic that would tell the program to stop itself once the maximum value of the heap is 0, this way the heap will have a runtime of $O(lg(n) - k)$ where$ k$ is the number of red objects. 
+\end{enumerate}
+\end{flushleft}
+\end{document}

@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\author{Luke Nigro}
+\title{Algorithms and Data Structures}
+\date{September 5th, 2018}
+
+\begin{document}
+
+\centering \Huge Algorithms and Data Structures \\
+\Large Luke Nigro - Homework 2 \\
+\begin{flushleft}
+\begin{enumerate}
+\setlength\itemsep{2em}
+
+\item
+Divide-and-conquer algorithms work by splitting large problems into many smaller and more easily solvable sub-problems using a dividing function. The solutions of the sub-problems are found with a conquer function (also usually an algorithm) and are then merged together using a merge function. Some good examples of using a divide-and-conquer approach would be to sort large lists of number, or to find minimum and maximum values of those lists. It is also a useful framework when designing algorithms in general, since it is the basis of many current algorithms such as the merge sort.
+\item
+$T(n) = 2T(\floor*{\frac{n}{2}} + 17 ) + n$ is similar enough to $T(n) = 2T(\floor*{\frac{n}{2}}) + n$\par
+\bigskip
+We assume that $T(\floor*{\frac{n}{2}}) \leq c \floor*{\frac{n}{2}}log(\floor*{\frac{n}{2}})$ \par
+\bigskip
+$T(n) \leq 2(c \floor*{\frac{n}{2}}log(\floor*{\frac{n}{2}}) + n \leq cnlg(\frac{n}{2}) + 2 $\\
+$= cnlg(n) - cnlg(2) + n= cnlg(n) - cn + n \leq cnlg(n)$\par
+\bigskip
+Therefore $T(n) = O(nlgn)$
+
+\item
+In order to solve the maximum contiguous subarray problem, we can implement Kadane's Algorithm which can find the sum of the maximum contiguous subarray in $\Theta{(n)}$ time.
+This algorithm is implemented as follows:\par
+\bigskip
+max\_so\_far = A[1] \quad \quad\quad \quad \quad \quad $\Theta(1)$\\
+max\_of\_current\_sub = A[1] \quad \quad $\Theta(1)$\\
+\quad for each i in A[2 ...n] \quad \quad\quad \quad  $2T(n)$\\
+\quad \quad max\_of\_current\_sub = max(i, max\_so\_far + i)\\
+\quad \quad max\_so\_far = max(max\_so\_far, max\_of\_current\_sub)\\
+retrieve value of max\_so\_far\par
+\bigskip
+$T(n) = 2T(n) + 2\Theta(1) = \Theta(n)$
+
+\end{enumerate}
+\end{flushleft}
+\end{document}
